@@ -1,46 +1,53 @@
 import { Loader, Sky } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { Bloom, DepthOfField, EffectComposer, HueSaturation, Noise, Pixelation } from '@react-three/postprocessing';
+import { EffectComposer, HueSaturation, Noise, Pixelation, Vignette } from '@react-three/postprocessing';
 
-import Controller from '../Controller';
-import Model from '../Model';
+import Controller from '../components/Controller';
+import Model from '../components/Model';
 
-export default function SampleScene() {
+export default function Home() {
   const objects = [
     {
       name: 'OrangeBox',
       isSolid: true,
-      position: [-3, 0, -4],
-      scale: [4, 2, 2],
-      size: [4, 2, 2],
-    },
-    {
-      name: 'OrangeBox',
-      isSolid: true,
-      position: [3, 0, -4],
-      scale: [4, 2, 2],
-      size: [4, 2, 2],
-    },
-    {
-      name: 'GreenBox',
-      isSolid: false,
-      position: [0, 0, -4],
-      scale: [2, 2, 0.5],
-      size: [2, 2, 0.5],
-    },
-    {
-      name: 'OrangeBox',
-      isSolid: true,
-      position: [-5.25, -0.5, 0],
+      position: [-10, -0.5, 0],
       scale: [0.5, 0.5, 10],
       size: [0.5, 0.5, 10],
     },
     {
       name: 'OrangeBox',
       isSolid: true,
-      position: [5.25, -0.5, 0],
+      position: [10, -0.5, 0],
       scale: [0.5, 0.5, 10],
       size: [0.5, 0.5, 10],
+    },
+    {
+      name: 'OrangeBox',
+      isSolid: true,
+      position: [0, 0, -10],
+      scale: [10, 10, 1],
+      size: [10, 10, 1],
+    },
+    {
+      name: 'OrangeBox',
+      isSolid: true,
+      position: [-5, 0, 7.5],
+      scale: [2, 2, 0.1],
+      size: [2, 2, 0.1],
+    },
+    {
+      name: 'OrangeBox',
+      isSolid: true,
+      position: [5, 0, 7.5],
+      scale: [1, 1, 0.1],
+      size: [1, 1, 0.1],
+    },
+    {
+      name: 'OrangeBox',
+      isSolid: true,
+      position: [0, 0, 7.5],
+      scale: [1, 1, 0.1],
+      size: [1, 1, 0.1],
     },
   ];
 
@@ -53,10 +60,9 @@ export default function SampleScene() {
           <Pixelation
             granularity={4} // pixel granularity
           />
-          <DepthOfField focusDistance={0} focalLength={0.1} bokehScale={10} height={128} />
-          <Bloom luminanceThreshold={1} luminanceSmoothing={1} height={128} />
           <Noise opacity={0.05} />
           <HueSaturation saturation={0.125} />
+          <Vignette offset={0.5} darkness={0.5} />
         </EffectComposer>
         <Controller
           objects={objects}
